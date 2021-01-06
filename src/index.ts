@@ -10,6 +10,16 @@ export class Time {
     this.m = parseInt(timeArray[1])
   }
 
+  static convertMinutesToHours(input: number) {
+    if (typeof input !== "number")
+      throw new Error("Type of input must be a number")
+    if (input < 0) throw new Error("Input must be greater then zero")
+    const h = Math.floor(input / 60)
+    const m = input % 60
+
+    return { h, m }
+  }
+
   changeInMinutes(minutesToAdd: number) {
     if (typeof minutesToAdd !== "number")
       throw new Error("Type of minutesToAdd must be a number")

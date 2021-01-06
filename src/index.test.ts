@@ -47,4 +47,30 @@ describe("/helpers/Time", () => {
       expect(result).toBe("11:03")
     })
   })
+
+  describe("convertMinutesToHours", () => {
+    it("should throw if input is negative", () => {
+      expect(() => Time.convertMinutesToHours(-10)).toThrow()
+    })
+
+    it("should throw if input is not a number", () => {
+      expect(() => Time.convertMinutesToHours("foo" as any)).toThrow()
+    })
+
+    it("should return h: 1 and m: 0 if input is 60", () => {
+      const result = Time.convertMinutesToHours(60)
+
+      expect(result).toEqual({ h: 1, m: 0 })
+    })
+    it("should return h: 1 and m: 15 if input is 75", () => {
+      const result = Time.convertMinutesToHours(75)
+
+      expect(result).toEqual({ h: 1, m: 15 })
+    })
+    it("should return h: 25 and m: 11 if input is 60 * 25 + 11", () => {
+      const result = Time.convertMinutesToHours(60 * 25 + 11)
+
+      expect(result).toEqual({ h: 25, m: 11 })
+    })
+  })
 })

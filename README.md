@@ -18,4 +18,9 @@ const time = new Time("13:00")
 time.changeInMinutes(30).toString() // => 13:30
 time.changeInMinutes(60 * 23).toString() // => 12:00
 time.changeInMinutes(-30).toString() // => 12:30
+
+// convertMinutesToHours
+
+Time.convertMinutesToHours(75) // => {h: 1, m: 15}
+Time.convertMinutesToHours(1511) // => {h: 25, m: 11}
 ```
